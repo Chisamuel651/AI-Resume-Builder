@@ -7,6 +7,7 @@ import SignInPage from './auth/sign-in'
 import Home from './home'
 import Dashboard from './dashboard'
 import { ClerkProvider } from '@clerk/clerk-react'
+import SignUpPage from './auth/sign-up'
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
  const router = createBrowserRouter([
@@ -14,19 +15,27 @@ const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
     // path:'/',
     element:<App />,
     children: [
-      {
-        path:'/',
-        element: <Home />
-      },
+      // {
+      //   path:'/',
+      //   element: <Home />
+      // },
       {
         path:'/dashboard',
         element: <Dashboard />
       }
     ]
-  }
+  },
+  {
+    path:'/',
+    element: <Home />
+  },
   ,{
     path:"/auth/sign-in",
     element:<SignInPage />
+  },
+  {
+    path: '/auth/sign-up',
+    element: <SignUpPage />
   }
  ])
 
