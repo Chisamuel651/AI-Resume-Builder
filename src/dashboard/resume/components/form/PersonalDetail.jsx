@@ -3,9 +3,10 @@ import { Input } from '@/components/ui/input'
 import { ResumeInfoContext } from '@/context/ResumeInfoContext'
 import React, { useContext } from 'react'
 
-function PersonalDetail() {
+function PersonalDetail({enableNext}) {
     const {resumeInfo, setResumeInfo} = useContext(ResumeInfoContext)
     const handleInputChange = (e) => {
+        enableNext(false);
         const {name, value} = e.target;
 
         setResumeInfo({
@@ -15,6 +16,7 @@ function PersonalDetail() {
     }
     const onSave = (e) => {
         e.preventDefault();
+        enableNext(true)
     }
   return (
     <div className='p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10'>
@@ -41,7 +43,7 @@ function PersonalDetail() {
             </div>
             <div>
                 <label className='text-sm'>Phone</label>
-                <Input name='phone' required onChange={handleInputChange} />
+                <Input name='phone' type='number' required onChange={handleInputChange} />
             </div>
             <div>
                 <label className='text-sm'>Email</label>
