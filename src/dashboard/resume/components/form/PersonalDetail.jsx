@@ -14,11 +14,11 @@ function PersonalDetail({enableNext}) {
     const [ loading, setLoading ] = useState(false)
 
     useEffect(() => {
-        console.log(params)
+        console.log("---",resumeInfo)
     }, [])
     const handleInputChange = (e) => {
         enableNext(false);
-        const {name, value} = e.target;
+        const {name,value} = e.target;
 
         setFormData({
             ...formData,
@@ -34,13 +34,13 @@ function PersonalDetail({enableNext}) {
         e.preventDefault();
         setLoading(true)
         const data = {
-            data: formData
+            data:formData
         }
         GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(resp => {
             console.log(resp)
             enableNext(true)
             setLoading(false)
-            toast("Detail updated.")
+            toast("Details updated.")
         }, (error) => {
             setLoading(false)
         })
@@ -55,27 +55,27 @@ function PersonalDetail({enableNext}) {
         <div className='grid grid-cols-2 mt-5 gap-3'>
             <div>
                 <label className='text-sm'>First Name</label>
-                <Input name='firstName' defaultValue={resumeInfo.firstName} required onChange={handleInputChange} />
+                <Input name='firstName' required onChange={handleInputChange} defaultValue={resumeInfo?.firstName || ''} />
             </div>
             <div>
                 <label className='text-sm'>Last Name</label>
-                <Input name='lastName' defaultValue={resumeInfo.lastName} required onChange={handleInputChange} />
+                <Input name='lastName' defaultValue={resumeInfo?.lastName} required onChange={handleInputChange} />
             </div>
             <div className='col-span-2'>
                 <label className='text-sm'>Job Title</label>
-                <Input name='jobTitle' defaultValue={resumeInfo.jobTitle} required onChange={handleInputChange} />
+                <Input name='jobTitle' defaultValue={resumeInfo?.jobTitle} required onChange={handleInputChange} />
             </div>
             <div className='col-span-2'>
                 <label className='text-sm'>Address</label>
-                <Input name='address' defaultValue={resumeInfo.address} required onChange={handleInputChange} />
+                <Input name='address' defaultValue={resumeInfo?.address} required onChange={handleInputChange} />
             </div>
             <div>
                 <label className='text-sm'>Phone</label>
-                <Input name='phone' defaultValue={resumeInfo.phone} type='number' required onChange={handleInputChange} />
+                <Input name='phone' defaultValue={resumeInfo?.phone} type='number' required onChange={handleInputChange} />
             </div>
             <div>
                 <label className='text-sm'>Email</label>
-                <Input name='email' defaultValue={resumeInfo.email} type='email' required onChange={handleInputChange} />
+                <Input name='email' defaultValue={resumeInfo?.email} type='email' required onChange={handleInputChange} />
                 
             </div>
         </div>
