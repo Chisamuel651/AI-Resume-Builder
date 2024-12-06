@@ -4,7 +4,7 @@ import { ResumeInfoContext } from '@/context/ResumeInfoContext'
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import GlobalApi from './../../../../../service/GlobalApi';
-import { LoaderCircle } from 'lucide-react'
+import { Brain, LoaderCircle } from 'lucide-react'
 
 function Summary({enableNext}) {
     const params = useParams();
@@ -46,7 +46,7 @@ function Summary({enableNext}) {
                 <form className='mt-7' onSubmit={onSave}>
                     <div className='flex items-end justify-between'>
                         <label>Add Summary</label>
-                        <Button className='border-primary text-primary' size='sm' variant='outline'>Generate From ResumeAI</Button>
+                        <Button className='border-primary text-primary flex gap-2' type='button' size='sm' variant='outline'> <Brain className='h-4 w-4' /> Generate From ResumeAI</Button>
                     </div>
                     <Textarea className='mt-5' required onChange={(e) => setSummary(e.target.value)} />
 

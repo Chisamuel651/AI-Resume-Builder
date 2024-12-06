@@ -14,7 +14,7 @@ function PersonalDetail({enableNext}) {
     const [ loading, setLoading ] = useState(false)
 
     useEffect(() => {
-        console.log("---",resumeInfo)
+        console.log(resumeInfo)
     }, [])
     const handleInputChange = (e) => {
         enableNext(false);
